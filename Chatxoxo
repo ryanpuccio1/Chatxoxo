@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatxo - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Chatxo!</h1>
+        <p>Your favorite live cam chat site!</p>
+    </header>
+
+    <main>
+        <section class="info">
+            <p>Join us live on Chatxo, where everything is happening!</p>
+            <a href="chat.html" class="join-button">Join the Live Chat</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Chatxo. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatxo - Live Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="chat.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Live Chat - Chatxo</h1>
+    </header>
+
+    <main>
+        <div class="viewer-count">
+            <h3>Viewers: <span id="viewer-count">42</span></h3>
+        </div>
+
+        <section class="chat-box">
+            <div id="chat-messages">
+                <!-- Fake chat messages will be displayed here -->
+            </div>
+            <div class="fake-chat">
+                <p>Anonymous: You're looking great!</p>
+                <p>Viewer123: I love this show!</p>
+                <p>Anonymous: Keep it up, you're awesome!</p>
+            </div>
+
+            <div class="fake-donations">
+                <p>Donation: $50 from User123!</p>
+                <p>Donation: $20 from Fan456!</p>
+            </div>
+        </section>
+
+        <button class="fake-donation-btn" onclick="makeFakeDonation()">Make a Donation</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Chatxo. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+a.join-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+a.join-button:hover {
+    background-color: #0056b3;
+}
+
+.chat-box {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fake-chat {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fafafa;
+    border-radius: 5px;
+    text-align: left;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.fake-donations {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fafafa;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.fake-donation-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.fake-donation-btn:hover {
+    background-color: #218838;
+}
+
+let viewerCount = 42;
+const viewerCountElement = document.getElementById('viewer-count');
+const chatMessages = document.getElementById('chat-messages');
+
+function updateViewerCount() {
+    viewerCount = Math.floor(Math.random() * (153 - 40 + 1)) + 40; // Random viewers between 40-153
+    viewerCountElement.textContent = viewerCount;
+}
+
+function makeFakeDonation() {
+    const donationAmount = Math.floor(Math.random() * 100) + 10; // Random donation between $10 and $100
+    const fakeDonationMessage = `Donation: $${donationAmount} from User${Math.floor(Math.random() * 1000)}!`;
+    const donationElement = document.createElement('p');
+    donationElement.textContent = fakeDonationMessage;
+    document.querySelector('.fake-donations').appendChild(donationElement);
+}
+
+// Simulate viewer count update every 5 seconds
+setInterval(updateViewerCount, 5000);
